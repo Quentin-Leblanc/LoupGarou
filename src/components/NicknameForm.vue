@@ -1,6 +1,7 @@
 
-<script>
 
+<!--TEMPLATE JS-->
+<script>
   export default {
       name: "NicknameForm",
     
@@ -31,8 +32,9 @@
       },
       props: ['onFormSuccess']
     };
-  </script>
+</script>
 
+<!--TEMPLATE HTML-->
 <template >
           <div class="input-group">
             <!-- pseudo -->

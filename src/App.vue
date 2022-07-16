@@ -2,11 +2,13 @@
 <script>
 
 import NicknameFormVue from './components/NicknameForm.vue';
+import CreateLobby from './components/CreateLobby.vue';
 
   export default {
       name: "App",
       components:{
-        NicknameFormVue
+        NicknameFormVue,
+        CreateLobby
       },
       data() {
         return {
@@ -29,7 +31,7 @@ import NicknameFormVue from './components/NicknameForm.vue';
           }, 250);
           setTimeout(() => {
             this.outFaded = true;
-          }, 700);
+          }, 900);
         }
 
         
@@ -54,9 +56,7 @@ import NicknameFormVue from './components/NicknameForm.vue';
           <NicknameFormVue :onFormSuccess=onFormSuccess />
         </div>
       </transition>
-
-
-
+      
       <!--::::::::  transition ::::::::::::--->
       <div
         class="griffeSVG displayNone"
@@ -71,6 +71,9 @@ import NicknameFormVue from './components/NicknameForm.vue';
       </div>
 
       <!--::::::::  Step 2 - Intro ::::::::::::--->
+        <div v-if="step == 2" class="step2">
+          <CreateLobby :onLobbyCreated=onLobbyCreated />
+        </div>
     </div>
   </div>
 </template>
