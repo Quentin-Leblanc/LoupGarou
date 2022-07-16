@@ -35,20 +35,21 @@
                     {{ message }}
                 </h2>
 
+
+
                 <!--::::::::  Step 1 - Intro ::::::::::::--->
                 <transition name="fade">
-                    <div v-if="step1 == true" class="step1">
+                    <div v-if="step == 1" class="step1">
 
                         <div class="input-group">
                             <!-- pseudo -->
-                            <input v-model="form.pseudo" placeholder="Entrez votre pseudo" @keyup.enter="checkPseudo()"
+                            <input v-model="form.pseudo" placeholder="Entrez votre pseudo" @keyup.enter="checkPseudo"
                                 type="text" class="form-control" aria-label="Recipient's username"
                                 aria-describedby="basic-addon2">
 
                             <!-- submit -->
                             <div class="input-group-append">
-                                <button v-on:click="checkPseudo" v-on:keyup.enter="checkPseudo" class="btn btn-dark go"
-                                    type="button">Jouer</button>
+                                <button v-on:click="checkPseudo" class="btn btn-dark go" type="button">Jouer</button>
                             </div>
                         </div>
                         <div v-if="form.error == true" class="alert alert-danger" role="alert">
@@ -58,12 +59,17 @@
                     </div>
                 </transition>
 
-                <!--::::::::  Step 2 - Intro ::::::::::::--->
-
+                <!--::::::::  transition ::::::::::::--->
                 <div class="griffeSVG displayNone" :class="{displayBlock : isFaded, opacityNone : outFaded}">
                     <object :class="{scaleAnim : isFaded}" data="img/svg/griffe_anim.svg" width="400" height="400">
                     </object>
                 </div>
+
+
+                <!--::::::::  Step 2 - Intro ::::::::::::--->
+
+
+
             </div>
 
         </div>

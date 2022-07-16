@@ -68,7 +68,6 @@ body, #app {
     z-index: 2;
     background: #e16969;
     color: white;
-    font-weight: bold;
     -webkit-border-radius: 0 .375rem .375rem 0;
     border-radius: 0 .375rem .375rem 0;
     --bs-btn-border-width: 0px;
@@ -93,7 +92,8 @@ body, #app {
     left: 0;
     right: 0;
     text-align: center;
-    top: 20%;
+    top: 10%;
+
 }
 .griffeSVG object{
     transform: scale(1);
@@ -134,21 +134,12 @@ body, #app {
 @keyframes scaleAnim {
     from {
         transform: scale(2);
+        top:15%;
     }
   
     to {
         transform: scale(1);
-    }
-  }
-  @keyframes fadeAnim {
-    0% {
-        text-shadow: 0 0 20px 10px #000000;
-    }
-    50% {
-        text-shadow: 0 0 20px #ff3d3d;
-    }
-    100% {
-        text-shadow: 0 0 20px #000000;
+        top:10%
     }
   }
 
