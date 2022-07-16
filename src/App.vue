@@ -1,26 +1,236 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <div class="content gradient_black" :class="{gradient_red : isFaded}">
+            <div class="container">
+
+                <h2 class="movIn" :class="{fadeAnim : !isFaded, moveUp : isFaded, opacityNone : isFaded}">
+                    {{ message }}
+                </h2>
+
+
+
+                <!--::::::::  Step 1 - Intro ::::::::::::--->
+                <transition name="fade">
+                    <div v-if="step == 1" class="step1">
+
+                        <div class="input-group">
+                            <!-- pseudo -->
+                            <input v-model="form.pseudo" placeholder="Entrez votre pseudo" @keyup.enter="checkPseudo"
+                                type="text" class="form-control" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2">
+
+                            <!-- submit -->
+                            <div class="input-group-append">
+                                <button v-on:click="checkPseudo" class="btn btn-dark go" type="button">Jouer</button>
+                            </div>
+                        </div>
+                        <div v-if="form.error == true" class="alert alert-danger" role="alert">
+                            Pseudo incorrect
+                        </div>
+
+                    </div>
+                </transition>
+
+                <!--::::::::  transition ::::::::::::--->
+                <div class="griffeSVG displayNone" :class="{displayBlock : isFaded, opacityNone : outFaded}">
+                    <object :class="{scaleAnim : isFaded}" data="img/svg/griffe_anim.svg" width="400" height="400">
+                    </object>
+                </div>
+
+
+                <!--::::::::  Step 2 - Intro ::::::::::::--->
+
+
+
+            </div>
+
+        </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+
+   data() {
+        return {
+            step :  1,
+            message: "Bienvenue les p'tits loups",
+            form: {
+                pseudo : null,
+                error : false
+            },
+            isFaded : false,
+            outFaded : false,
+        }
+    },
+    methods: {
+        checkPseudo(){
+            const valideChars = /^[a-zA-Z][0-9a-zA-Z .,'-]*$/i;
+            if(this.form.pseudo == null || this.form.pseudo == "" || this.form.pseudo.length >= 20 || !valideChars.test(this.form.pseudo)){
+                this.form.error = true
+            }  else {
+            this.step = 2
+            console.log("Votre pseudo est ", this.form.pseudo)
+            setTimeout(() => {
+                this.isFaded = true;
+              }, 250);
+            setTimeout(() => {
+            this.outFaded = true;
+            }, 700);
+            }
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+  body, #app {
+    background-attachment :fixed;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
+
+.content  {
+    width:100%;
+    height: 100%;
+    background-attachment: fixed;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+.gradient_black  {
+    background: linear-gradient(to bottom,  #1c1c1c 0%,#353535 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.gradient_red {
+    background: linear-gradient(to bottom,  #1c1c1c 0%,#2b2424 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.container {
+    margin:0 auto;
+    text-align: center;
+    max-width: 1000px;
+    padding: 5%;
+}
+.container h2 {
+    font-family: 'Henny Penny', cursive;
+    font-size: 3em;
+    padding: 5%;
+    color: #e16969;
+}
+.container .input-group, .container .alert{
+    margin: 0 auto;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1%;
+    margin-top: 1%;
+}
+.container .alert  {
+    max-width: 100%;
+    background: none;
+    border: none;
+    color: #e16969;
+    font-size: 1em;
+    margin: 0 auto;
+}
+.step1 .input-group-append {
+    z-index: 5;
+}
+.step1 .input-group input {
+    border: 1px solid #e16969;
+    padding: 0.365rem 0.75rem;
+    color: #ffffff;
+    background-color: #444;
+}
+.step1 .input-group input:focus {
+    box-shadow: 0 0 0 0rem rgb(225 105 105 / 25%) !important;
+}
+.step1 .input-group input::placeholder{
+    color:rgb(172, 172, 172);
+}
+.step1 .input-group .btn {
+    position: relative;
+    z-index: 2;
+    background: #e16969;
+    color: white;
+    -webkit-border-radius: 0 .375rem .375rem 0;
+    border-radius: 0 .375rem .375rem 0;
+    --bs-btn-border-width: 0px;
+    padding: 0.43rem 0.75rem;
+}
+.alerted{
+    background: #d40000 !important;
+}
+.successed {
+    background: #00ff80 !important;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.griffeSVG {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 10%;
+
+}
+.griffeSVG object{
+    transform: scale(1);
+}
+
+
+.displayNone {
+    display: none;
+}
+.displayBlock {
+    display: block;
+
+}
+.scaleAnim {
+    animation-duration: 0.5s;
+    animation-name: scaleAnim;
+    animation-timing-function: ease-in-out;
+}
+
+
+.opacityNone {
+    transition: opacity .5s;
+    opacity: 0;
+}
+.moveUp {
+    margin-top:-1%;
+    transition: all .5s;
+}
+.fadeAnim  {
+    animation-duration: 5s;
+    animation-name: fadeAnim;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    text-shadow: 0 0 20px #000000;
+}
+
+/* anims */
+@keyframes scaleAnim {
+    from {
+        transform: scale(2);
+        top:15%;
+    }
+  
+    to {
+        transform: scale(1);
+        top:10%
+    }
+  }
+
+
+
 </style>
