@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import  router  from '@/router'
 
 export const store = reactive({
     
@@ -23,7 +24,7 @@ export const store = reactive({
             this.step = 0;
             setTimeout(() => {
               this.step = 2;
-              this.$router.push({ path: '/creer-partie' });
+                router.push({ path: '/creer-partie' });
             }, 500);
             setTimeout(() => {
               this.isFaded = true;
