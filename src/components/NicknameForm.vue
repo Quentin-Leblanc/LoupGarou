@@ -2,6 +2,8 @@
 
 <!--TEMPLATE JS-->
 <script>
+
+
   export default {
       name: "NicknameForm",
     

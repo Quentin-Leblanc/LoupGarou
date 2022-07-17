@@ -1,28 +1,23 @@
 
 <script>
-
-import NicknameFormVue from './components/NicknameForm.vue';
-import CreateLobby from './components/CreateLobby.vue';
-import JoinLobby from './components/JoinLobby.vue';
-import LobbyStart from './components/LobbyStart.vue';
-
-const routes = {
-  '/': NicknameFormVue,
-  '/CreateLobby': CreateLobby,
-}
-
+ //import NicknameFormVue from './components/NicknameForm.vue';
+ //import CreateLobby from './components/CreateLobby.vue';
+ //import JoinLobby from './components/JoinLobby.vue';
+ //import LobbyStart from './components/LobbyStart.vue';
+import { store } from './store.js';
 
   export default {
       name: "App",
       components:{
-        NicknameFormVue,
-        CreateLobby,
-        JoinLobby,
-        LobbyStart,
+    //    NicknameFormVue,
+    //     CreateLobby,
+    //    JoinLobby,
+    //    LobbyStart,
+
       },
       data() {
         return {
-          currentPath: window.location.hash,
+          store,
           step: 1,   
           form: {
             pseudo: null,
@@ -40,6 +35,7 @@ const routes = {
           this.step = 0;
           setTimeout(() => {
             this.step = 2;
+          // this.$router.push('/creer-partie')
           }, 500);
           setTimeout(() => {
             this.isFaded = true;
@@ -74,69 +70,44 @@ const routes = {
 
         
       },
-      computed: {
-          currentView() {
-            return routes[this.currentPath.slice(1) || '/']
-        }
-      },
-      mounted() {
-          window.addEventListener('hashchange', () => {
-            this.currentPath = window.location.hash
-          })
-      }
-
     };
+
   </script>
 
 
 <template>
   <div class="content gradient_black" :class="{ gradient_red: isFaded }">
     <div class="container">
+           <div id="nav">
+       
+              <router-link to="/creer-partie">Creer une partie</router-link>
+              <router-link to="/rejoindre-partie">Rejoindre une partie</router-link>
+          </div>
+
+          <router-view />
 
 
-      <!--::::::::  Step 1 - ::::::::::::--->
-      <transition name="fade">
-         <component :is="currentView" />
-      </transition>
-      
-      <!--::::::::  transition ::::::::::::
-      <div
-        class="griffeSVG displayNone"
-        :class="{ displayBlock: isFaded, opacityNone: outFaded }"
-      >
-      --->
-      
-      <!--::::::::  Step 2 - menu lobby ::::::::::::--->
-      <transition name="fade">
-        <div v-if="step == 2" class="step2">
-              <div class="buttons_lobby">
-                  <button v-on:click="showCreateParty" type="button" class="btn btn-primary">Créer une partie</button>
-                  <button v-on:click="showJoinParty" type="button" class="btn btn-primary">Rejoindre une partie</button>
-              </div>
-        </div>
-      </transition>
 
-      <!--::::::::  Step 2.1 - create lobby ::::::::::::--->
-      <transition name="fade">
-        <div v-if="step == 2.1" class="step2_1">
-          <CreateLobby :onLobbyCreated=onLobbyCreated />
-        </div>
-      </transition>
 
-      <!--::::::::  Step 2.2 - join lobby ::::::::::::--->
-      <transition name="fade">
-        <div v-if="step == 2.2" class="step2_2">
-          <JoinLobby />
-        </div>
-      </transition>
 
-      <!--::::::::  Step 3 - lobby ::::::::::::--->
-      <transition name="fade">
-        <div v-if="step == 3" class="step3">
-          <LobbyStart :infosLobby=infosLobby :pseudo=form.pseudo />
-        </div>
-      </transition>
-    
+
+
+
+
+
+                <!--::::::::  Step 2 - menu lobby ::::::::::::
+                <transition name="fade">
+                  <div v-if="step == 2" class="step2">
+                        <div class="buttons_lobby">
+                            <button v-on:click="showCreateParty" type="button" class="btn btn-primary">Créer une partie</button>
+                            <button v-on:click="showJoinParty" type="button" class="btn btn-primary">Rejoindre une partie</button>
+                        </div>
+                  </div>
+                </transition>
+                --->
+                       
+
+
     </div>
   </div>
 </template>
