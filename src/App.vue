@@ -6,6 +6,12 @@ import CreateLobby from './components/CreateLobby.vue';
 import JoinLobby from './components/JoinLobby.vue';
 import LobbyStart from './components/LobbyStart.vue';
 
+const routes = {
+  '/': NicknameFormVue,
+  '/CreateLobby': CreateLobby,
+}
+
+
   export default {
       name: "App",
       components:{
@@ -16,6 +22,7 @@ import LobbyStart from './components/LobbyStart.vue';
       },
       data() {
         return {
+          currentPath: window.location.hash,
           step: 1,   
           form: {
             pseudo: null,
@@ -67,20 +74,29 @@ import LobbyStart from './components/LobbyStart.vue';
 
         
       },
+      computed: {
+          currentView() {
+            return routes[this.currentPath.slice(1) || '/']
+        }
+      },
+      mounted() {
+          window.addEventListener('hashchange', () => {
+            this.currentPath = window.location.hash
+          })
+      }
+
     };
   </script>
 
 
-<template >
+<template>
   <div class="content gradient_black" :class="{ gradient_red: isFaded }">
     <div class="container">
 
 
       <!--::::::::  Step 1 - ::::::::::::--->
       <transition name="fade">
-        <div v-if="step == 1" class="step1">
-          <NicknameFormVue :onFormSuccess=onFormSuccess />
-        </div>
+         <component :is="currentView" />
       </transition>
       
       <!--::::::::  transition ::::::::::::
@@ -124,5 +140,10 @@ import LobbyStart from './components/LobbyStart.vue';
     </div>
   </div>
 </template>
+
+
+
+
+
 
 
