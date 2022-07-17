@@ -21,6 +21,7 @@ import LobbyStart from './components/LobbyStart.vue';
             pseudo: null,
             error: false,
           },
+          infosLobby : null,
           isFaded: false,
           outFaded: false,
         };
@@ -57,6 +58,7 @@ import LobbyStart from './components/LobbyStart.vue';
           console.log('Nom de la partie : ', infosLobby.name);
           console.log('Type de partie (open = true) : ', infosLobby.open)
           this.step = 0;
+          this.infosLobby = infosLobby
           
           setTimeout(() => {
           this.step = 3;
@@ -115,7 +117,7 @@ import LobbyStart from './components/LobbyStart.vue';
       <!--::::::::  Step 3 - lobby ::::::::::::--->
       <transition name="fade">
         <div v-if="step == 3" class="step3">
-          <LobbyStart :infosLobby='infosLobby' :pseudo='this.form.pseudo'/>
+          <LobbyStart :infosLobby=infosLobby :pseudo=form.pseudo />
         </div>
       </transition>
     
