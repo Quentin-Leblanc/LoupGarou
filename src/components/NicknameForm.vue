@@ -7,6 +7,7 @@
     
       data() {
         return {
+          message: "Bienvenue les p'tits loups",
           form: {
             pseudo: null,
             error: false,
@@ -24,7 +25,7 @@
           ) {
             this.form.error = true;
           } else {
-            console.log("Votre pseudo est ", this.form.pseudo);
+            console.log("Votre pseudo est : ", this.form.pseudo);
             this.onFormSuccess(this.form.pseudo);
             
           }
@@ -36,6 +37,13 @@
 
 <!--TEMPLATE HTML-->
 <template >
+      <h2
+        class="movIn"
+      >
+        {{ message }}
+      </h2>
+
+
           <div class="input-group">
             <!-- pseudo -->
             <input
@@ -43,7 +51,7 @@
               placeholder="Entrez votre pseudo"
               @keyup.enter="checkPseudo"
               type="text"
-              class="form-control"
+              class="form-control  input-light-red"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
             />
@@ -52,7 +60,7 @@
             <div class="input-group-append">
               <button
                 v-on:click="checkPseudo"
-                class="btn btn-dark go"
+                class="btn btn-light-red go"
                 type="button"
               >
                 Jouer

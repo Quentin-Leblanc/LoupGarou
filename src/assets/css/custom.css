@@ -7,6 +7,10 @@ body,
   position: fixed;
   width: 100%;
   height: 100%;
+  color:white;
+}
+p { 
+  color:white;
 }
 
 .content {
@@ -44,12 +48,13 @@ body,
   padding: 5%;
   color: #e16969;
   font-weight: normal;
+  text-shadow: 0px 3px 5px black;
 }
 .container .input-group,
 .container .alert {
   margin: 0 auto;
   text-align: center;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 1%;
   margin-top: 1%;
@@ -62,30 +67,35 @@ body,
   font-size: 1em;
   margin: 0 auto;
 }
-.step1 .input-group-append {
+.input-group-append {
   z-index: 5;
 }
-.step1 .input-group input {
-  border: 1px solid #e16969;
+.input-group input {
   padding: 0.365rem 0.75rem;
   color: #ffffff;
   background-color: #444;
 }
-.step1 .input-group input:focus {
+.input-group input:focus {
   box-shadow: 0 0 0 0rem rgb(225 105 105 / 25%) !important;
 }
-.step1 .input-group input::placeholder {
-  color: rgb(172, 172, 172);
+.input-group input::placeholder {
+  color: rgb(255, 255, 255);
 }
-.step1 .input-group .btn {
+.input-group .btn{
   position: relative;
   z-index: 2;
-  background: #e16969;
+
   color: white;
   -webkit-border-radius: 0 0.375rem 0.375rem 0;
   border-radius: 0 0.375rem 0.375rem 0;
   --bs-btn-border-width: 0px;
   padding: 0.43rem 0.75rem;
+}
+.input-group .btn-light-red  {
+  background: #e16969;
+}
+.input-group .input-light-red{
+  border: 1px solid #e16969;
 }
 .alerted {
   background: #d40000 !important;
@@ -95,7 +105,7 @@ body,
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
@@ -134,13 +144,28 @@ body,
   margin-top: -1%;
   transition: all 0.5s;
 }
-.fadeAnim {
-  animation-duration: 5s;
-  animation-name: fadeAnim;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  text-shadow: 0 0 20px #000000;
+.form-control {
+  margin: 0  auto;
 }
+/* step 2 */
+.buttons_lobby .btn {
+  margin:2%;
+  color:white;
+}
+.form-check {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.form-check  label {
+  display: block;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 
 /* anims */
 @keyframes scaleAnim {
