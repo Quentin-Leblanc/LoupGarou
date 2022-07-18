@@ -1,7 +1,11 @@
 import { reactive } from "vue";
 import router from "@/router";
+import { db } from "@/firebase";
+import { collection, querySnapshot } from "firebase/firestore";
 
 export const store = reactive({
+
+
   // Step 1
   message: "Bienvenue les p'tits loups",
   form: {
@@ -44,4 +48,15 @@ export const store = reactive({
       router.push({ path: "/partie" });
     }
   },
+
+
+  onSnapshot(collection(db, 'room'), (querySnapshot) => {
+    const rooms = [];
+    querySnapshot.forEach((doc) => {
+      rooms.push(doc.data().name);
+    });
+    console.log("Rooms: ", rooms.join(", "));
+  });
+  
+  
 });

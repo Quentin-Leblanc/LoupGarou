@@ -1,7 +1,11 @@
 <script>
-//import AddComponent from './components/AddComponent.vue';
+/** import AddComponent from './components/AddComponent.vue'; **/
 
 import { store } from "./store.js";
+import { db } from "@/firebase";
+import { collection, querySnapshot } from "firebase/firestore";
+import { cp } from "fs";
+import { ref, onMounted } from "vue";
 
 export default {
   name: "App",
@@ -32,20 +36,6 @@ export default {
       setTimeout(() => {
         this.isFaded = true;
       }, 250);
-    },
-    //step2.1
-    showCreateParty() {
-      this.step = 0;
-      setTimeout(() => {
-        this.step = 2.1;
-      }, 500);
-    },
-    //step2.2
-    showJoinParty() {
-      this.step = 0;
-      setTimeout(() => {
-        this.step = 2.2;
-      }, 500);
     },
   },
 };

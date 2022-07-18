@@ -1,6 +1,8 @@
+/** import */
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
+/** config */
 const firebaseConfig = {
   apiKey: "AIzaSyAaqLwBShCNL0Zb8BVpwA_JXb8j-1c9YUs",
   authDomain: "garoloup2.firebaseapp.com",
@@ -9,10 +11,11 @@ const firebaseConfig = {
   messagingSenderId: "826364983543",
   appId: "1:826364983543:web:070fed213e200aaffabbf2",
 };
-
-// Initialize Firebase
+/** Initialize Firebase */
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+export { db };
 
 // Get a list of cities from your database
 async function getCities(db) {
