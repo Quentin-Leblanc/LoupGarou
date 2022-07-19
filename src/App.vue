@@ -2,10 +2,6 @@
 /** import AddComponent from './components/AddComponent.vue'; **/
 
 import { store } from "./store.js";
-import { db } from "@/firebase";
-import { collection, querySnapshot } from "firebase/firestore";
-import { cp } from "fs";
-import { ref, onMounted } from "vue";
 
 export default {
   name: "App",

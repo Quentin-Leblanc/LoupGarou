@@ -1,6 +1,13 @@
 /** import */
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  /* doc, */
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 
 /** config */
 const firebaseConfig = {
@@ -27,3 +34,16 @@ async function getCities(db) {
 
 setTimeout(() => console.log(getCities(db)), 2000);
 getCities(db).then(console.log);
+const rooms1 = getCities(db).then();
+console.log(rooms1);
+
+const q = query(collection(db, "rooms"));
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const rooms = [];
+  querySnapshot.forEach((doc) => {
+    rooms.push(doc.data().name);
+  });
+  console.log("q :", q);
+  console.log("rooms: ", rooms.join(", "));
+  console.log("unsubscribe = ", unsubscribe);
+});
