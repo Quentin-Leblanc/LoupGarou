@@ -28,7 +28,7 @@ const routes = [
   },
   {
     name: "OnLobby",
-    path: "/partie",
+    path: "/partie/:id",
     component: OnLobby,
   },
 ];

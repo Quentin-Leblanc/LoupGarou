@@ -10,15 +10,26 @@ export default {
       store,
     };
   },
+  computed: {
+    destinationId() {
+      return parseInt(this.$route.params.id);
+    },
+  },
 };
 </script>
+
 <!--TEMPLATE HTML-->
 <template>
   <div>
+    <p>{{ store.lobItems }}</p>
+    <p>{{ store.data.lobItems }}</p>
+    <p>nom de la partie</p>
     <h2 class="movIn">
       {{ store.lobby.name }}
     </h2>
-
+    <p>id de la partie :</p>
+    <h3>{{ $route.params.id }}</h3>
+    <br />
     <div class="btn_players">
       <div>
         <span>Joueur 1</span>

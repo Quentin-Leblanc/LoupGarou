@@ -1,7 +1,7 @@
 <!--TEMPLATE JS-->
 <script>
 import { store } from "@/store";
-import { firebase } from "@/firebase";
+import { db } from "@/firebase";
 
 export default {
   name: "JoinLobby",
@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       store,
-      firebase,
+      db,
     };
   },
   methods: {},
@@ -21,6 +21,5 @@ export default {
   <div>
     <h2>Liste des parties</h2>
     <button type="button" class="btn btn-primary"></button>
-    <p>{{ firebase.rooms2 }}</p>
   </div>
 </template>

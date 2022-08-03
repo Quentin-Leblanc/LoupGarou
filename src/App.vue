@@ -1,6 +1,7 @@
 <script>
 /** import AddComponent from './components/AddComponent.vue'; **/
 
+import { db } from "./firebase.js";
 import { store } from "./store.js";
 
 export default {
@@ -33,6 +34,11 @@ export default {
         this.isFaded = true;
       }, 250);
     },
+  },
+  firestore() {
+    return {
+      rooms: db.collection("room"),
+    };
   },
 };
 </script>
