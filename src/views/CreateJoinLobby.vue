@@ -1,13 +1,10 @@
 <!--TEMPLATE JS-->
 <script>
 import { store } from "@/store";
-import TitleLogo from "@/components/TitleLogo.vue";
 
 export default {
   name: "CreateJoinLobby",
-  components: {
-    TitleLogo,
-  },
+
   data() {
     return {
       store,
@@ -20,7 +17,7 @@ export default {
 <!--TEMPLATE HTML-->
 <template>
   <div>
-    <TitleLogo />
+
     <div class="nav-choix">
       <router-link to="/creer-partie">
         <button type="button" class="btn btn-danger light-red">

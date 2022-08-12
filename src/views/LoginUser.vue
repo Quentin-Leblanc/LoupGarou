@@ -1,12 +1,9 @@
 <!--TEMPLATE JS-->
 <script>
 import { useUserStore} from "@/store";
-import TitleLogo from "@/components/TitleLogo.vue";
 
 export default {
-  components: {
-    TitleLogo
-  },
+
   data() {
     return {
       name: '',
@@ -23,7 +20,7 @@ export default {
        const isValidName = validChars.test(this.name);
        if (isValidName) {
           const store = useUserStore();
-          store.$patch({ name: this.name });
+          store.$patch({ name: this.name, logged: true });
           this.error = false;
           // router.push({ path: "/choix-partie" });
         } else {
@@ -37,8 +34,6 @@ export default {
 <!--TEMPLATE HTML-->
 <template>
   <div>
-    <TitleLogo />
-
     <div class="input-group">
       <!-- pseudo -->
       <input
