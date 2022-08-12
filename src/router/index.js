@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Login from "@/views/Login.vue";
+import LoginUser from "@/views/LoginUser.vue";
 import CreateJoinLobby from "@/views/CreateJoinLobby.vue";
 import CreateLobby from "@/views/CreateLobby.vue";
 import JoinLobby from "@/views/JoinLobby.vue";
@@ -9,7 +9,7 @@ const routes = [
   {
     name: "Login",
     path: "/",
-    component: Login,
+    component: LoginUser,
   },
   {
     name: "CreateJoinLobby",

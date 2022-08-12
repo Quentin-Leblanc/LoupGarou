@@ -1,22 +1,22 @@
-import { reactive } from "vue";
 import router from "@/router";
+import { defineStore} from "pinia"
 
-
-export const store = reactive({
-  // Step 1
-  message: "Bienvenue les p'tits loups",
-  form: {
-    pseudo: null,
-    error: false,
-  },
-  lobby: {
-    name: null,
-    open: false,
-    players: {},
-  },
-  lobbies: {},
-  rooms: [],
-  lobItems: [],
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    message: "Bienvenue les p'tits loups",
+    form: {
+      pseudo: null,
+      error: false,
+    },
+    lobby: {
+      name: null,
+      open: false,
+      players: {},
+    },
+    lobbies: {},
+    rooms: [],
+    lobItems: [],
+  }),
   valideName(tested) {
     const valideChars = /^[a-zA-Z][0-9a-zA-Z .,'-é]*$/i;
     if (

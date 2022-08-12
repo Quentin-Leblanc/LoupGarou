@@ -1,20 +1,17 @@
 <!--TEMPLATE JS-->
 <script>
-import { store } from "../store.js";
+import { useUserStore} from "@/store";
 import TitleLogo from "@/components/TitleLogo.vue";
 
 export default {
-  name: "HomeAccueil",
   components: {
-    //   AddComponent,
-    TitleLogo,
+    TitleLogo
   },
-  data() {
-    return {
-      store,
-    };
-  },
-};
+  setup(){
+    const store = useUserStore();
+    return {store}
+  }
+}
 </script>
 
 <!--TEMPLATE HTML-->

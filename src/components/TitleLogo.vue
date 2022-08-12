@@ -1,22 +1,15 @@
 <!--TEMPLATE JS-->
-<script>
-import { store } from "@/store";
+<script setup>
+import { useUserStore} from "@/store"
 
-export default {
-  name: "TitleLogo",
-
-  data() {
-    return {
-      store,
-    };
-  },
-};
+import { storeToRefs} from "pinia"
+const {message} = storeToRefs(useUserStore())
 </script>
 <!--TEMPLATE HTML-->
 <template>
   <div>
     <h2 class="movIn">
-      {{ store.message }}
+      {{ message }}
     </h2>
   </div>
 </template>
