@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import HomeAccueil from "@/views/HomeAccueil.vue";
+import Login from "@/views/Login.vue";
 import CreateJoinLobby from "@/views/CreateJoinLobby.vue";
 import CreateLobby from "@/views/CreateLobby.vue";
 import JoinLobby from "@/views/JoinLobby.vue";
@@ -7,9 +7,9 @@ import OnLobby from "@/views/OnLobby.vue";
 
 const routes = [
   {
-    name: "HomeAccueil",
+    name: "Login",
     path: "/",
-    component: HomeAccueil,
+    component: Login,
   },
   {
     name: "CreateJoinLobby",
