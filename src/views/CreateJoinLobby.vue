@@ -1,13 +1,13 @@
 <!--TEMPLATE JS-->
 <script>
-import { store } from "@/store";
+
 
 export default {
   name: "CreateJoinLobby",
 
   data() {
     return {
-      store,
+      
     };
   },
   methods: {},

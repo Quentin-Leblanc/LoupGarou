@@ -1,6 +1,6 @@
 <!--TEMPLATE JS-->
 <script>
-import { useUserStore} from "@/store";
+import { useUserStore} from "@/stores/user";
 
 export default {
 
