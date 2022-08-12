@@ -10,10 +10,9 @@ export default {
       store,
     };
   },
+  created: () => {store.loadCities(); console.log('getCities : ', store.rooms); },
   computed: {
-    destinationId() {
-      return parseInt(this.$route.params.id);
-    },
+    getPartyId: function() {return parseInt(this.$route.params.id)},
   },
 };
 </script>
@@ -21,8 +20,7 @@ export default {
 <!--TEMPLATE HTML-->
 <template>
   <div>
-    <p>{{ store.lobItems }}</p>
-    <p>{{ store.data.lobItems }}</p>
+{{store.lobbies}}
     <p>nom de la partie</p>
     <h2 class="movIn">
       {{ store.lobby.name }}

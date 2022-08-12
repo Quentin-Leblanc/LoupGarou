@@ -54,17 +54,21 @@ async function createLobbyToDb() {
   }
 }
 
-export { db, sendPseudoToDb, createLobbyToDb };
 
-/*
-// Get a list of cities from your database
 async function getCities(db) {
-  const citiesCol = collection(db, "room");
-  const citySnapshot = await getDocs(citiesCol);
-  const cityList = citySnapshot.docs.map((doc) => doc.data());
-  return cityList;
+  console.log('why')
+  const querySnapshot = await getDocs(collection(db, "rooms"));
+
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+  });
+  return querySnapshot
 }
 
+export { db, sendPseudoToDb, createLobbyToDb, getCities };
+
+
+/*
 const rooms1 = getCities(db);
 
 rooms1.then((data) => {
