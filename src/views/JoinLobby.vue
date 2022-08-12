@@ -1,23 +1,23 @@
 <!--TEMPLATE JS-->
-<script>
+<script setup>
 
+import { useGameStore } from "@/stores/game"
+import { storeToRefs } from "pinia"
+const { gamesList } = storeToRefs(useGameStore());
 
-export default {
-  name: "JoinLobby",
-
-  data() {
-    return {
-      
-    };
-  },
-  methods: {},
-  props: ["onLobbyJoined"],
-};
+const { fetchGames } = useGameStore()
+fetchGames();
 </script>
 <!--TEMPLATE HTML-->
 <template>
   <div>
     <h2>Liste des parties</h2>
-    <button type="button" class="btn btn-primary"></button>
+    <ul>
+      <li v-for="game in gamesList" :key="game.id">
+        id : {{game.id}} name : {{game.name}}
+      </li>
+
+    </ul>
+    <button type="button" class="btn btn-primary" v-on="fetchGames"></button>
   </div>
 </template>
