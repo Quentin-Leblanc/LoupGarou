@@ -1,7 +1,6 @@
 <!--TEMPLATE JS-->
 <script>
 import { store } from "@/store";
-import { db } from "@/firebase";
 
 export default {
   name: "JoinLobby",
@@ -9,7 +8,6 @@ export default {
   data() {
     return {
       store,
-      db,
     };
   },
   methods: {},

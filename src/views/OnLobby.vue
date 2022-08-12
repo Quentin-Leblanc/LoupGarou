@@ -10,7 +10,7 @@ export default {
       store,
     };
   },
-  created: () => {store.loadCities(); console.log('getCities : ', store.rooms); },
+
   computed: {
     getPartyId: function() {return parseInt(this.$route.params.id)},
   },
