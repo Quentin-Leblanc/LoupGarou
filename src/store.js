@@ -3,6 +3,10 @@ import { defineStore} from "pinia"
 
 export const useUserStore = defineStore('user', {
   state: () => ({
+    name: null,
+
+
+    // old store
     message: "Bienvenue les p'tits loups",
     form: {
       pseudo: null,
@@ -17,6 +21,12 @@ export const useUserStore = defineStore('user', {
     rooms: [],
     lobItems: [],
   }),
+
+  actions: {
+    setUserName(name) {
+      this.name = name;
+    }
+  },
   valideName(tested) {
     const valideChars = /^[a-zA-Z][0-9a-zA-Z .,'-é]*$/i;
     if (

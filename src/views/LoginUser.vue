@@ -7,9 +7,29 @@ export default {
   components: {
     TitleLogo
   },
+  data() {
+    return {
+      name: '',
+      error: false,
+    }
+  },
   setup(){
     const store = useUserStore();
     return {store}
+  },
+  methods:{
+    checkName() {
+       const validChars = /^[0-9a-zA-Z .,'-é]{1,40}$/i;
+       const isValidName = validChars.test(this.name);
+       if (isValidName) {
+          const store = useUserStore();
+          store.$patch({ name: this.name });
+          this.error = false;
+          // router.push({ path: "/choix-partie" });
+        } else {
+          this.error = true;
+        }
+    }
   }
 }
 </script>
@@ -22,9 +42,9 @@ export default {
     <div class="input-group">
       <!-- pseudo -->
       <input
-        v-model="store.form.pseudo"
+        v-model="name"
         placeholder="Entrez votre pseudo"
-        @keyup.enter="store.checkPseudo"
+        @keyup.enter="checkName"
         type="text"
         class="form-control input-light-red"
         aria-label="Recipient's username"
@@ -34,7 +54,7 @@ export default {
       <!-- submit -->
       <div class="input-group-append">
         <button
-          v-on:click="store.checkPseudo"
+          v-on:click="checkName"
           class="btn btn-light-red go"
           type="button"
         >
@@ -43,7 +63,7 @@ export default {
       </div>
     </div>
     <div
-      v-if="store.form.error == true"
+      v-if="error == true"
       class="alert alert-danger"
       role="alert"
     >
