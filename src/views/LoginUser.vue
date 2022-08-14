@@ -1,39 +1,41 @@
 <!--TEMPLATE JS-->
 <script>
-import { useUserStore} from "@/stores/user";
+import { useUserStore } from "@/stores/user";
 
 export default {
-
   data() {
     return {
-      name: '',
+      name: "",
       error: false,
-    }
+    };
   },
-  setup(){
+  setup() {
     const store = useUserStore();
-    return {store}
+    return { store };
   },
-  methods:{
+  methods: {
     checkName() {
-       const validChars = /^[0-9a-zA-Z .,'-é]{1,40}$/i;
-       const isValidName = validChars.test(this.name);
-       if (isValidName) {
-          const store = useUserStore();
-          store.$patch({ name: this.name, logged: true });
-          this.error = false;
-          // router.push({ path: "/choix-partie" });
-        } else {
-          this.error = true;
-        }
-    }
-  }
-}
+      const validChars = /^[0-9a-zA-Z .,'-é]{1,40}$/i;
+      const isValidName = validChars.test(this.name);
+      if (isValidName) {
+        const store = useUserStore();
+        store.$patch({ name: this.name, logged: true });
+        this.error = false;
+        // router.push({ path: "/choix-partie" });
+      } else {
+        this.error = true;
+      }
+    },
+  },
+};
 </script>
 
 <!--TEMPLATE HTML-->
 <template>
   <div>
+    <div class="logo">
+      <img src="../assets/logo.png" />
+    </div>
     <div class="input-group">
       <!-- pseudo -->
       <input
@@ -57,11 +59,7 @@ export default {
         </button>
       </div>
     </div>
-    <div
-      v-if="error == true"
-      class="alert alert-danger"
-      role="alert"
-    >
+    <div v-if="error == true" class="alert alert-danger" role="alert">
       Pseudo incorrect
     </div>
   </div>
